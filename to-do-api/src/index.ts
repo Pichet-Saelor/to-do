@@ -1,4 +1,5 @@
 import { Elysia } from "elysia";
+import { openapi } from "@elysiajs/openapi";
 import { cors } from "@elysiajs/cors";
 import { todoRoutes } from "./routes/todos";
 
@@ -14,6 +15,7 @@ const resolvedCorsOrigins = corsOrigin
   : defaultCorsOrigins;
 
 const app = new Elysia()
+  .use(openapi())
   .use(
     cors({
       origin: corsOrigin === "*" ? true : resolvedCorsOrigins,
